@@ -1,0 +1,8 @@
+target/
+
+# Properties
+application.properties
+
+# IntelliJ IDEA
+.idea/
+xeus-vgdb-backend.iml
