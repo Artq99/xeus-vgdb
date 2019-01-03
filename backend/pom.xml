@@ -19,6 +19,11 @@
         <junit.version>4.12</junit.version>
         <spring.version>2.0.5.RELEASE</spring.version>
         <mysql.version>8.0.12</mysql.version>
+        <hsql.version>2.3.2</hsql.version>
+        <mvncompiler.version>3.5.1</mvncompiler.version>
+        <flyway.version>5.2.4</flyway.version>
+
+        <migration.location>src/main/resources/db/migration</migration.location>
     </properties>
 
     <dependencies>
@@ -58,7 +63,7 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
+            <version>${hsql.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -77,13 +82,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${mvncompiler.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -100,8 +105,31 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway.version}</version>
+                <configuration>
+                    <configFile>./src/main/resources/flyway.properties</configFile>
+                    <locations>
+                        <location>filesystem:${migration.location}</location>
+                    </locations>
+                </configuration>
+            </plugin>
+
         </plugins>
 
     </build>
+
+    <profiles>
+
+        <profile>
+            <id>flyway-testdata</id>
+            <properties>
+                <migration.location>src/main/resources/db</migration.location>
+            </properties>
+        </profile>
+
+    </profiles>
 
 </project>
