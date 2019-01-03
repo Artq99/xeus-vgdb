@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OverviewListService } from '../overview-list.service';
 
 @Component({
   selector: 'app-overview-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private overviewListService: OverviewListService) { }
 
   ngOnInit() {
+    this.overviewListService.getOverviewList().subscribe(list => {
+      console.log(list);
+    })
   }
 
 }
