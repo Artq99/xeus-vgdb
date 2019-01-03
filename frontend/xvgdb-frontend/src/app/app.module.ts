@@ -2,21 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { GamesBrowserModule } from './games-browser/games-browser.module';
+
 import { AppComponent } from './app.component';
-import { OverviewListComponent } from './overview-list/overview-list.component';
-import { OverviewListService } from './overview-list.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OverviewListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
-  ],
-  providers: [
-    OverviewListService
+    HttpClientModule,
+    GamesBrowserModule
   ],
   bootstrap: [AppComponent]
 })

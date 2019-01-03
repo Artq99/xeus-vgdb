@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { OverviewListService } from '../overview-list.service';
+import { OverviewListService } from '../../services/overview-list.service';
 
+/**
+ * Component rendering the overview list of the games.
+ */
 @Component({
   selector: 'app-overview-list',
   templateUrl: './overview-list.component.html',
