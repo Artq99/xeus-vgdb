@@ -17,8 +17,8 @@ export class OverviewListService {
   /**
    * The method that returns the overview list of games.
    */
-  getOverviewList(): Observable<Object[]> {
-    return this.httpClient.get<Object[]>(this.overviewListGetUrl);
+  getOverviewList(): Observable<OverviewListElement[]> {
+    return this.httpClient.get<OverviewListElement[]>(this.overviewListGetUrl);
   }
 
 }

@@ -8,12 +8,12 @@ import { OverviewListService } from '../overview-list.service';
 })
 export class OverviewListComponent implements OnInit {
 
+  overviewList: OverviewListElement[];
+
   constructor(private overviewListService: OverviewListService) { }
 
   ngOnInit() {
-    this.overviewListService.getOverviewList().subscribe(list => {
-      console.log(list);
-    })
+    this.overviewListService.getOverviewList().subscribe(list => this.overviewList = list);
   }
 
 }
