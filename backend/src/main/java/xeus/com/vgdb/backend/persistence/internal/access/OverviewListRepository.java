@@ -9,7 +9,6 @@ import xeus.com.vgdb.backend.persistence.internal.mapping.OverviewListElementMap
 import xeus.com.vgdb.backend.persistence.internal.response.OverviewListElement;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -20,8 +19,11 @@ public class OverviewListRepository implements IOverviewListRepository {
 
     @Override
     public List<OverviewListElementDTO> getOverviewList() {
-        Query query = entityManager.createNamedQuery(NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST);
-        List<OverviewListElement> responseList = query.getResultList();
+        List<OverviewListElement> responseList = entityManager
+                .createNamedQuery(
+                        NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST,
+                        OverviewListElement.class)
+                .getResultList();
         return OverviewListElementMapper.createDTOListFromResponseList(responseList);
     }
 }
