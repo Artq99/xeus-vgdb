@@ -1,5 +1,7 @@
 #!/bin/sh
 
+START=`date +%s`
+
 echo "[INFO] ========================================================================"
 echo "[INFO] Building dockerized backend..."
 echo "[INFO] ========================================================================"
@@ -89,4 +91,7 @@ echo "[INFO] Tomcat Server is up and running."
 
 echo "[INFO] ------------------------------------------------------------------------"
 
-echo "[INFO] Dockerized backend built."
+END=`date +%s`
+DURATION=$((END-START))
+
+echo "[INFO] Dockerized backend built in $DURATION seconds."

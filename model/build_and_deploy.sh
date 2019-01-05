@@ -1,5 +1,7 @@
 #!/bin/sh
 
+START=`date +%s`
+
 echo "[INFO] ========================================================================"
 echo "[INFO] Building dockerized database..."
 echo "[INFO] ========================================================================"
@@ -184,4 +186,7 @@ echo "[INFO] Privileges granted."
 
 echo "[INFO] ------------------------------------------------------------------------"
 
-echo "[INFO] Dockerized database built."
+END=`date +%s`
+DURATION=$((END-START))
+
+echo "[INFO] Dockerized database built in $DURATION seconds."
