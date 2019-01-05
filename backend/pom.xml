@@ -23,7 +23,7 @@
         <mvncompiler.version>3.5.1</mvncompiler.version>
         <flyway.version>5.2.4</flyway.version>
 
-        <migration.location>src/main/resources/db/migration</migration.location>
+        <migration.location>../model/scripts/migration</migration.location>
     </properties>
 
     <dependencies>
@@ -126,7 +126,7 @@
         <profile>
             <id>flyway-testdata</id>
             <properties>
-                <migration.location>src/main/resources/db</migration.location>
+                <migration.location>../model/scripts</migration.location>
             </properties>
         </profile>
 
