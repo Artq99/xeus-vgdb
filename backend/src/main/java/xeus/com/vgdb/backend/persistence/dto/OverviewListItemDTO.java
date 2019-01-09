@@ -2,7 +2,12 @@ package xeus.com.vgdb.backend.persistence.dto;
 
 import java.util.GregorianCalendar;
 
-public class OverviewListElementDTO {
+/**
+ * The data transfer object for an item of the overview list.
+ *
+ * @author Artur Matracki
+ */
+public class OverviewListItemDTO {
 
     private Long gameId;
     private String title;

@@ -1,20 +1,20 @@
 package xeus.com.vgdb.backend.services;
 
-import xeus.com.vgdb.backend.persistence.dto.OverviewListElementDTO;
-
-import java.util.List;
+import xeus.com.vgdb.backend.services.response.OverviewListPageResponse;
 
 /**
- * The service for getting the list of games in an overview form.
+ * The service for accessing the list of games in an overview form.
  *
  * @author Artur Matracki
  */
 public interface IOverviewListService {
 
     /**
-     * Returns the list of games in an overview form.
+     * Method that returns a single page from a paginated overview list of games.
      *
-     * @return the list of games
+     * @param pageNumber page number of the list
+     * @param pageSize   number of results on one page
+     * @return page from the list
      */
-    List<OverviewListElementDTO> findAllGameSimpleListElements();
+    OverviewListPageResponse getPaginatedOverviewList(int pageNumber, final int pageSize);
 }

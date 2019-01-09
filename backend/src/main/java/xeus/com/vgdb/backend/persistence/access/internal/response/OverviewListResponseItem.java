@@ -1,16 +1,15 @@
-package xeus.com.vgdb.backend.persistence.internal.response;
+package xeus.com.vgdb.backend.persistence.access.internal.response;
 
 import java.util.Date;
 
 /**
  * <p>The class representing a single element of the response from the query <code>GetOverviewList</code>.</p>
  *
- * <p>Query name: <code>GetOverviewList</code></p>
- * <p>Query defined in: {@link xeus.com.vgdb.backend.persistence.internal.entities.GameEntity}</p>
+ * <p>Query defined in {@link xeus.com.vgdb.backend.persistence.internal.entities.GameEntity}.</p>
  *
  * @author Artur Matracki
  */
-public class OverviewListElement {
+public class OverviewListResponseItem {
 
     /**
      * The name of the mapping to this class.
@@ -57,8 +56,9 @@ public class OverviewListElement {
      * @param releasesCount    column <code>release_count</code>
      * @param firstReleaseDate column <code>first_release_date</code>
      */
-    public OverviewListElement(Long gameId, String title, String gameDescription, Integer releasesCount,
-                               Date firstReleaseDate) {
+    public OverviewListResponseItem(Long gameId, String title, String gameDescription, Integer releasesCount,
+                                    Date firstReleaseDate) {
+
         this.gameId = gameId;
         this.title = title;
         this.gameDescription = gameDescription;
