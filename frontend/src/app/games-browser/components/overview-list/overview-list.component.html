@@ -1,16 +1,16 @@
 <div class="w3-container">
-  <table class="w3-table-all">
-    <tr class="w3-dark-grey">
-      <th>Title</th>
-      <th>Description</th>
-      <th>Number of releases</th>
-      <th>Date of the first release</th>
-    </tr>
-    <tr *ngFor="let game of overviewList">
-      <td>{{game.title}}</td>
-      <td>{{game.gameDescription}}</td>
-      <td>{{game.releasesCount}}</td>
-      <td>{{game.firstReleaseDate | date: "dd/MM/yyyy"}}</td>
-    </tr>
-  </table>
+    <table class="w3-table-all">
+        <tr class="w3-dark-grey">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Number of releases</th>
+            <th>Date of the first release</th>
+        </tr>
+        <tr *ngFor="let game of overviewList">
+            <td>{{game.title}}</td>
+            <td>{{game.gameDescription}}</td>
+            <td>{{game.releasesCount}}</td>
+            <td>{{game.firstReleaseDate | date: "dd/MM/yyyy"}}</td>
+        </tr>
+    </table>
 </div>

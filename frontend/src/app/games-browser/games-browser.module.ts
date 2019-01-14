@@ -8,17 +8,17 @@ import { OverviewListService } from './services/overview-list.service';
  * Module that holds the functionality related to browsing the games.
  */
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    OverviewListComponent
-  ],
-  providers: [
-    OverviewListService
-  ],
-  exports: [
-    OverviewListComponent
-  ]
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        OverviewListComponent
+    ],
+    providers: [
+        OverviewListService
+    ],
+    exports: [
+        OverviewListComponent
+    ]
 })
 export class GamesBrowserModule { }

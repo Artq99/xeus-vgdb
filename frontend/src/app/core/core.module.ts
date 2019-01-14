@@ -6,14 +6,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
  * Module providing the app core components.
  */
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    NavbarComponent
-  ],
-  exports: [
-    NavbarComponent
-  ]
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        NavbarComponent
+    ],
+    exports: [
+        NavbarComponent
+    ]
 })
 export class CoreModule { }

@@ -10,15 +10,15 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class OverviewListService {
 
-  private overviewListGetUrl = environment.backendUrl + '/overviewList/get';
+    private overviewListGetUrl = environment.backendUrl + '/overviewList/get';
 
-  constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) { }
 
-  /**
-   * The method that returns the overview list of games.
-   */
-  getOverviewList(): Observable<OverviewListElement[]> {
-    return this.httpClient.get<OverviewListElement[]>(this.overviewListGetUrl);
-  }
+    /**
+     * The method that returns the overview list of games.
+     */
+    getOverviewList(): Observable<OverviewListElement[]> {
+        return this.httpClient.get<OverviewListElement[]>(this.overviewListGetUrl);
+    }
 
 }

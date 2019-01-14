@@ -8,15 +8,15 @@ import { GamesBrowserModule } from './games-browser/games-browser.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    CoreModule,
-    GamesBrowserModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        CoreModule,
+        GamesBrowserModule
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
