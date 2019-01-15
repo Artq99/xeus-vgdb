@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
@@ -17,8 +17,9 @@ export class OverviewListService {
     /**
      * The method that returns the overview list of games.
      */
-    getOverviewList(): Observable<OverviewListElement[]> {
-        return this.httpClient.get<OverviewListElement[]>(this.overviewListGetUrl);
+    getOverviewList(): Observable<OverviewListResponse> {
+        let params: HttpParams = new HttpParams().set('page', '0').set('maxResults', '10');
+        return this.httpClient.get<OverviewListResponse>(this.overviewListGetUrl, { params: params });
     }
 
 }

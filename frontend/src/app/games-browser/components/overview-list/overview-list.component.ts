@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { OverviewListService } from '../../services/overview-list.service';
 
 /**
@@ -11,12 +13,17 @@ import { OverviewListService } from '../../services/overview-list.service';
 })
 export class OverviewListComponent implements OnInit {
 
-    overviewList: OverviewListElement[];
+    overviewList: OverviewListItem[];
 
-    constructor(private overviewListService: OverviewListService) { }
+    constructor(private route: ActivatedRoute, private overviewListService: OverviewListService) {
+        this.route.queryParams.subscribe( params => console.log(params));
+    }
 
     ngOnInit() {
-        this.overviewListService.getOverviewList().subscribe(list => this.overviewList = list);
+        this.overviewListService.getOverviewList().subscribe(res => {
+            let response: OverviewListResponse = res;
+            this.overviewList = response.page.overviewList;
+        });
     }
 
 }
