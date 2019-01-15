@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OverviewListComponent } from './components/overview-list/overview-list.component';
 import { OverviewListService } from './services/overview-list.service';
+
+import { GamesBrowserComponent } from './components/games-browser.component';
+import { OverviewListComponent } from './components/overview-list/overview-list.component';
 
 /**
  * Module that holds the functionality related to browsing the games.
@@ -12,13 +14,14 @@ import { OverviewListService } from './services/overview-list.service';
         CommonModule
     ],
     declarations: [
+        GamesBrowserComponent,
         OverviewListComponent
     ],
     providers: [
         OverviewListService
     ],
     exports: [
-        OverviewListComponent
+        GamesBrowserComponent
     ]
 })
 export class GamesBrowserModule { }
