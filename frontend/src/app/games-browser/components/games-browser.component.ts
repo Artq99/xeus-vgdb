@@ -15,13 +15,14 @@ export class GamesBrowserComponent implements OnInit {
 
     private page: number;
     private maxResults: number;
+    private pagesCount: number;
     private overviewList: OverviewListItem[];
 
     constructor(
         private activatedRoute: ActivatedRoute,
         private location: Location,
         private overviewListService: OverviewListService
-    ) {}
+    ) { }
 
     ngOnInit() {
 
@@ -67,8 +68,6 @@ export class GamesBrowserComponent implements OnInit {
 
             let response: OverviewListResponse = resp;
 
-            console.log(response);
-
             if (response.status === 'ERROR') {
                 // TODO The module for messages is not implemented yet.
                 response.messageList.messageList.forEach(element => {
@@ -86,6 +85,7 @@ export class GamesBrowserComponent implements OnInit {
             this.overviewList = response.page.overviewList;
             this.page = response.page.pageNumber;
             this.maxResults = response.page.pageSize;
+            this.pagesCount = response.page.totalPagesCount;
 
             if (response.status === 'SUCCESS_WITH_WARNINGS') {
                 // TODO The module for messages is not implemented yet.
@@ -100,5 +100,13 @@ export class GamesBrowserComponent implements OnInit {
 
             this.updateUrl();
         });
+    }
+
+    /**
+     * The callback for the event 'onTurnPageEvent'.
+     */
+    onTurnPageEvent(pageDiff: number) {
+        this.page += pageDiff;
+        this.loadOverviewList();
     }
 }

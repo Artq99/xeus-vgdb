@@ -5,6 +5,7 @@ import { OverviewListService } from './services/overview-list.service';
 
 import { GamesBrowserComponent } from './components/games-browser.component';
 import { OverviewListComponent } from './components/overview-list/overview-list.component';
+import { PaginationControlComponent } from './components/pagination-control/pagination-control.component';
 
 /**
  * Module that holds the functionality related to browsing the games.
@@ -15,7 +16,8 @@ import { OverviewListComponent } from './components/overview-list/overview-list.
     ],
     declarations: [
         GamesBrowserComponent,
-        OverviewListComponent
+        OverviewListComponent,
+        PaginationControlComponent
     ],
     providers: [
         OverviewListService

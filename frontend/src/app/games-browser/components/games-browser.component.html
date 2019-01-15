@@ -1,3 +1,9 @@
 <div class="w3-panel">
+    <app-pagination-control [currentPage]="page" [pagesCount]="pagesCount" (turnPageEvent)="onTurnPageEvent($event)"></app-pagination-control>
+</div>
+<div class="w3-panel">
     <app-overview-list [list]="overviewList"></app-overview-list>
+</div>
+<div class="w3-panel">
+    <app-pagination-control [currentPage]="page" [pagesCount]="pagesCount" (turnPageEvent)="onTurnPageEvent($event)"></app-pagination-control>
 </div>
