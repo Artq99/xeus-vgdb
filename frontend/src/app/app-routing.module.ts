@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/components/dashboard.component';
-import { GamesBrowserModule } from './games-browser/games-browser.module';
+import { OverviewListComponent } from './games-browser/components/overview-list/overview-list.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'games-browser', component: GamesBrowserModule }
+    { path: 'games-browser', component: OverviewListComponent }
 ]
 
 @NgModule({
