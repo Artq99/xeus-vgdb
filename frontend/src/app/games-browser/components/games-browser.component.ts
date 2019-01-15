@@ -63,10 +63,42 @@ export class GamesBrowserComponent implements OnInit {
      */
     private loadOverviewList() {
 
-        this.overviewListService.getOverviewList().subscribe(resp => {
+        this.overviewListService.getOverviewList(this.page, this.maxResults).subscribe(resp => {
 
             let response: OverviewListResponse = resp;
+
+            console.log(response);
+
+            if (response.status === 'ERROR') {
+                // TODO The module for messages is not implemented yet.
+                response.messageList.messageList.forEach(element => {
+                    if (element.type === 'ERROR') {
+                        console.error(element.text);
+                    } else if (element.type == 'WARNING') {
+                        console.warn(element.text);
+                    } else {
+                        console.info(element.text);
+                    }
+                });
+                return;
+            }
+
             this.overviewList = response.page.overviewList;
+            this.page = response.page.pageNumber;
+            this.maxResults = response.page.pageSize;
+
+            if (response.status === 'SUCCESS_WITH_WARNINGS') {
+                // TODO The module for messages is not implemented yet.
+                response.messageList.messageList.forEach(element => {
+                    if (element.type === 'WARNING') {
+                        console.warn(element.text);
+                    } else {
+                        console.info(element.text);
+                    }
+                })
+            }
+
+            this.updateUrl();
         });
     }
 }

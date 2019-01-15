@@ -15,10 +15,10 @@ export class OverviewListService {
     constructor(private httpClient: HttpClient) { }
 
     /**
-     * The method that returns the overview list of games.
+     * The method that returns one page from the overview list of games.
      */
-    getOverviewList(): Observable<OverviewListResponse> {
-        let params: HttpParams = new HttpParams().set('page', '0').set('maxResults', '10');
+    getOverviewList(page: number, maxResults: number): Observable<OverviewListResponse> {
+        let params: HttpParams = new HttpParams().set('page', String(page)).set('maxResults', String(maxResults));
         return this.httpClient.get<OverviewListResponse>(this.overviewListGetUrl, { params: params });
     }
 

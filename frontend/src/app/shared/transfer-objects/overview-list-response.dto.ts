@@ -8,10 +8,10 @@ class OverviewListItem {
 
 class OverviewListPage {
     overviewList: OverviewListItem[];
-    pageNumber: Number;
-    pageSize: Number;
-    totalItemsCount: Number;
-    totalPagesCount: Number;
+    pageNumber: number;
+    pageSize: number;
+    totalItemsCount: number;
+    totalPagesCount: number;
 }
 
 class OverviewListResponse {
