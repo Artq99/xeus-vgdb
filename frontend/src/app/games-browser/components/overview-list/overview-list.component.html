@@ -1,16 +1,24 @@
 <div class="w3-container">
-    <table class="w3-table-all">
-        <tr class="w3-dark-grey">
-            <th>Title</th>
-            <th>Description</th>
-            <th>Number of releases</th>
-            <th>Date of the first release</th>
-        </tr>
-        <tr *ngFor="let game of overviewList">
-            <td>{{game.title}}</td>
-            <td>{{game.gameDescription}}</td>
-            <td>{{game.releasesCount}}</td>
-            <td>{{game.firstReleaseDate | date: "dd/MM/yyyy"}}</td>
-        </tr>
-    </table>
+    <div *ngFor="let game of list" class="w3-card-4">
+        <div class="w3-panel w3-hover-shadow">
+            <table>
+                <tr>
+                    <td>
+                        <!-- Image placeholder -->
+                        <div class="w3-panel w3-light-grey" style="width: 100px; height: 100px;"></div>
+                    </td>
+                    <td>
+                        <div class="w3-container">
+                            <h4>{{game.title}}</h4>
+                            <div class="w3-opacity w3-small w3-text-grey">
+                                <span>First released: <b>{{game.firstReleaseDate | date: "dd.MM.yyyy"}}</b></span>
+                                <span>Releases: <b>{{game.releasesCount}}</b></span>
+                            </div>
+                            <p class="w3-opacity">{{game.gameDescription}}</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

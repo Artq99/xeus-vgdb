@@ -1,29 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { OverviewListService } from '../../services/overview-list.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 /**
  * Component rendering the overview list of the games.
  */
 @Component({
     selector: 'app-overview-list',
-    templateUrl: './overview-list.component.html',
-    styleUrls: ['./overview-list.component.css']
+    templateUrl: './overview-list.component.html'
 })
-export class OverviewListComponent implements OnInit {
+export class OverviewListComponent {
 
-    overviewList: OverviewListItem[];
-
-    constructor(private route: ActivatedRoute, private overviewListService: OverviewListService) {
-        this.route.queryParams.subscribe( params => console.log(params));
-    }
-
-    ngOnInit() {
-        this.overviewListService.getOverviewList().subscribe(res => {
-            let response: OverviewListResponse = res;
-            this.overviewList = response.page.overviewList;
-        });
-    }
-
+    @Input() list: OverviewListItem[];
 }
