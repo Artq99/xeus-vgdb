@@ -1,11 +1,6 @@
 package xeus.com.vgdb.backend.persistence.internal.entities;
 
-import xeus.com.vgdb.backend.persistence.internal.NamedQueriesConstants;
-import xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListCountResponse;
-import xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListResponseItem;
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,31 +10,25 @@ import java.util.List;
  */
 @Entity
 @Table(name = "t_game")
-@NamedNativeQueries({
-        @NamedNativeQuery(
-                name = NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST,
-                query = NamedQueriesConstants.QUERY_BODY_GET_OVERVIEW_LIST,
-                resultSetMapping = OverviewListResponseItem.MAPPING_NAME
-        )
-})
-@SqlResultSetMappings({
-        @SqlResultSetMapping(
-                name = OverviewListResponseItem.MAPPING_NAME,
-                classes = @ConstructorResult(
-                        targetClass = OverviewListResponseItem.class,
-                        columns = {
-                                @ColumnResult(name = OverviewListResponseItem.COLUMN_GAME_ID, type = Long.class),
-                                @ColumnResult(name = OverviewListResponseItem.COLUMN_TITLE, type = String.class),
-                                @ColumnResult(name = OverviewListResponseItem.COLUMN_GAME_DESCRIPTION, type = String.class),
-                                @ColumnResult(name = OverviewListResponseItem.COLUMN_RELEASES_COUNT, type = Integer.class),
-                                @ColumnResult(name = OverviewListResponseItem.COLUMN_FIRST_RELEASE_DATE, type = Date.class)
-                        }
-                )
-        )
-})
 @NamedQueries({
         @NamedQuery(
-                name = "OverviewListCount",
+                name = "GetOverviewList",
+                query = "" +
+                        "SELECT new" +
+                        "    xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListResponseItem(" +
+                        "        g.gameId, " +
+                        "        g.title, " +
+                        "        g.gameDescription, " +
+                        "        COUNT(r.releaseId), " +
+                        "        MIN(r.releaseDate)" +
+                        "    ) " +
+                        "FROM GameEntity g " +
+                        "LEFT JOIN g.releases r " +
+                        "GROUP BY g.gameId " +
+                        "ORDER BY g.title"
+        ),
+        @NamedQuery(
+                name = "GetOverviewListCount",
                 query = "SELECT COUNT(g.gameId) FROM GameEntity g"
         )
 })

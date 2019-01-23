@@ -3,15 +3,12 @@ package xeus.com.vgdb.backend.persistence.access.internal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import xeus.com.vgdb.backend.persistence.access.IOverviewListRepository;
-import xeus.com.vgdb.backend.persistence.dto.OverviewListItemDTO;
 import xeus.com.vgdb.backend.persistence.access.internal.mapping.OverviewListMapper;
-import xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListCountResponse;
 import xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListResponseItem;
-import xeus.com.vgdb.backend.persistence.internal.NamedQueriesConstants;
+import xeus.com.vgdb.backend.persistence.dto.OverviewListItemDTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -23,10 +20,7 @@ public class OverviewListRepository implements IOverviewListRepository {
     @Override
     public List<OverviewListItemDTO> getOverviewList(final int firstResult, final int maxResults) {
 
-        TypedQuery query = entityManager
-                .createNamedQuery(
-                        NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST,
-                        OverviewListResponseItem.class);
+        Query query = entityManager.createNamedQuery("GetOverviewList", OverviewListResponseItem.class);
         query.setFirstResult(firstResult);
         query.setMaxResults(maxResults);
 
@@ -39,9 +33,10 @@ public class OverviewListRepository implements IOverviewListRepository {
     @Override
     public long getOverviewListCount() {
 
-        Query query = entityManager.createNamedQuery("OverviewListCount", Long.class);
+        Query query = entityManager.createNamedQuery("GetOverviewListCount", Long.class);
         Long count = (Long) query.getSingleResult();
 
         return count;
     }
+
 }
