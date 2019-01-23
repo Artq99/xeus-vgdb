@@ -1,0 +1,1 @@
+INSERT INTO t_game (title, game_description) VALUES ('title1', 'description1');

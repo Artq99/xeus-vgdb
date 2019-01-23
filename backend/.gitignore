@@ -1,7 +1,7 @@
 target/
 
 # Properties
-*.properties
+src/main/resources/*.properties
 
 # IntelliJ IDEA
 .idea/
