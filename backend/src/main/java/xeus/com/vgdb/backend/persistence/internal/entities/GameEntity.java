@@ -20,11 +20,6 @@ import java.util.List;
                 name = NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST,
                 query = NamedQueriesConstants.QUERY_BODY_GET_OVERVIEW_LIST,
                 resultSetMapping = OverviewListResponseItem.MAPPING_NAME
-        ),
-        @NamedNativeQuery(
-                name = NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST_COUNT,
-                query = NamedQueriesConstants.QUERY_BODY_GET_OVERVIEW_LIST_COUNT,
-                resultSetMapping = OverviewListCountResponse.MAPPING_NAME
         )
 })
 @SqlResultSetMappings({
@@ -40,15 +35,12 @@ import java.util.List;
                                 @ColumnResult(name = OverviewListResponseItem.COLUMN_FIRST_RELEASE_DATE, type = Date.class)
                         }
                 )
-        ),
-        @SqlResultSetMapping(
-                name = OverviewListCountResponse.MAPPING_NAME,
-                classes = @ConstructorResult(
-                        targetClass = OverviewListCountResponse.class,
-                        columns = {
-                                @ColumnResult(name = OverviewListCountResponse.COLUMN_NAME_COUNT, type = Integer.class)
-                        }
-                )
+        )
+})
+@NamedQueries({
+        @NamedQuery(
+                name = "OverviewListCount",
+                query = "SELECT COUNT(g.gameId) FROM GameEntity g"
         )
 })
 public class GameEntity extends AbstractEntity {

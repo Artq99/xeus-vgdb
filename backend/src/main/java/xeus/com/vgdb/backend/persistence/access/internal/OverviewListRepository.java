@@ -10,6 +10,7 @@ import xeus.com.vgdb.backend.persistence.access.internal.response.OverviewListRe
 import xeus.com.vgdb.backend.persistence.internal.NamedQueriesConstants;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -38,11 +39,9 @@ public class OverviewListRepository implements IOverviewListRepository {
     @Override
     public int getOverviewListCount() {
 
-        return entityManager
-                .createNamedQuery(
-                        NamedQueriesConstants.QUERY_NAME_GET_OVERVIEW_LIST_COUNT,
-                        OverviewListCountResponse.class)
-                .getSingleResult()
-                .getCount();
+        Query query = entityManager.createNamedQuery("OverviewListCount", Long.class);
+        Long count = (Long) query.getSingleResult();
+
+        return Math.toIntExact(count);
     }
 }
