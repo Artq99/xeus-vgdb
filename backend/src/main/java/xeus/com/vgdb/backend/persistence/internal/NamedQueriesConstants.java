@@ -26,5 +26,5 @@ public class NamedQueriesConstants {
             "LEFT JOIN t_release USING(game_id) " +
             "GROUP BY game_id " +
             "ORDER BY t_game.title";
-    
+
 }

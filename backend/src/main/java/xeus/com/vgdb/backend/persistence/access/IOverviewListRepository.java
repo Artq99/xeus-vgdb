@@ -26,5 +26,5 @@ public interface IOverviewListRepository {
      *
      * @return number of games
      */
-    int getOverviewListCount();
+    long getOverviewListCount();
 }

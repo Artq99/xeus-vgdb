@@ -37,11 +37,11 @@ public class OverviewListRepository implements IOverviewListRepository {
     }
 
     @Override
-    public int getOverviewListCount() {
+    public long getOverviewListCount() {
 
         Query query = entityManager.createNamedQuery("OverviewListCount", Long.class);
         Long count = (Long) query.getSingleResult();
 
-        return Math.toIntExact(count);
+        return count;
     }
 }

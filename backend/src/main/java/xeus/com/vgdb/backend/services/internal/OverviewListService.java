@@ -39,7 +39,7 @@ public class OverviewListService implements IOverviewListService {
             messageList.add(Message.createWarning(WARNING_PAGE_NUMBER_LESS_THAN_ZERO));
         }
 
-        int totalItemsCount = overviewListRepository.getOverviewListCount();
+        int totalItemsCount = Math.toIntExact(overviewListRepository.getOverviewListCount());
         final int totalPagesCount = calculateTotalPagesCount(totalItemsCount, pageSize);
 
         if (pageNumber > totalPagesCount - 1) {
