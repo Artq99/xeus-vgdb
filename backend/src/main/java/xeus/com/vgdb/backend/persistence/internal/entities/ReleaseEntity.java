@@ -18,6 +18,9 @@ public class ReleaseEntity extends AbstractEntity {
     @Column
     private Date releaseDate;
 
+    @Column
+    private String releaseRegion;
+
     @Column(columnDefinition = "text")
     private String releaseDescription;
 
@@ -85,6 +88,14 @@ public class ReleaseEntity extends AbstractEntity {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getReleaseRegion() {
+        return releaseRegion;
+    }
+
+    public void setReleaseRegion(String releaseRegion) {
+        this.releaseRegion = releaseRegion;
     }
 
     public String getReleaseDescription() {
