@@ -16,5 +16,5 @@ public interface IOverviewListService {
      * @param pageSize   number of results on one page
      * @return page from the list
      */
-    OverviewListPageResponse getPaginatedOverviewList(int pageNumber, final int pageSize);
+    OverviewListPageResponse getOverviewList(int pageNumber, final int pageSize);
 }

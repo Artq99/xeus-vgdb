@@ -24,7 +24,7 @@ public class OverviewListService implements IOverviewListService {
     private IOverviewListRepository overviewListRepository;
 
     @Override
-    public OverviewListPageResponse getPaginatedOverviewList(int pageNumber, final int pageSize) {
+    public OverviewListPageResponse getOverviewList(int pageNumber, final int pageSize) {
 
         OverviewListPageResponse response = new OverviewListPageResponse();
         MessageList messageList = response.getMessageList();
@@ -62,6 +62,7 @@ public class OverviewListService implements IOverviewListService {
     }
 
     private int calculateTotalPagesCount(final int totalItemsCount, final int pageSize) {
+
         return (int) Math.ceil((double) totalItemsCount / pageSize);
     }
 }

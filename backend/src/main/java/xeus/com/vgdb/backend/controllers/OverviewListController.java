@@ -30,6 +30,6 @@ public class OverviewListController {
             @RequestParam final int page,
             @RequestParam final int maxResults) {
 
-        return overviewListService.getPaginatedOverviewList(page, maxResults);
+        return overviewListService.getOverviewList(page, maxResults);
     }
 }
