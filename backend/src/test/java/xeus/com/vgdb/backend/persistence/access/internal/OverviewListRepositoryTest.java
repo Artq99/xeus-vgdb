@@ -1,5 +1,6 @@
 package xeus.com.vgdb.backend.persistence.access.internal;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +10,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.jdbc.JdbcTestUtils;
 import xeus.com.vgdb.backend.Application;
+import xeus.com.vgdb.backend.persistence.dto.OverviewListItemDTO;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * The test class with persistence tests for {@link OverviewListRepository}.
@@ -32,6 +35,31 @@ public class OverviewListRepositoryTest {
     public void initialise() {
 
         jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    @Test
+    public void getOverviewList_shouldReturnOverviewList() {
+
+        // given
+        int expectedCount = JdbcTestUtils.countRowsInTable(jdbcTemplate, "t_game");
+
+        // when
+        List<OverviewListItemDTO> overviewList = repositoryUnderTest.getOverviewList(0, 9999);
+
+        // then
+        Assert.assertNotNull(overviewList);
+        Assert.assertThat(overviewList, Matchers.hasSize(expectedCount));
+    }
+
+    @Test
+    public void getOverviewList_shouldReturnFirstPageOfOverviewList() {
+
+        // when
+        List<OverviewListItemDTO> overviewList = repositoryUnderTest.getOverviewList(0, 2);
+
+        // then
+        Assert.assertNotNull(overviewList);
+        Assert.assertThat(overviewList, Matchers.hasSize(2));
     }
 
     @Test
